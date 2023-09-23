@@ -1,24 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import { Routes, Route } from "react-router-dom";
+import Thirukkural from './components/Thirukural/Thirukkural';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (<>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/thirukkural" element={<Thirukkural />} />
+    </Routes>
+  </>
   );
 }
 
