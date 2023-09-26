@@ -1,13 +1,12 @@
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import React from 'react'
+import { Breadcrumb } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
-function TaBreadcrumb() {
-    return (
-        <div className="container-xxl my-3">
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item active>Section</Breadcrumb.Item>
-        </Breadcrumb>
-        </div>
-      );
-}
-export default TaBreadcrumb;
+const CrumbItem = ({to, glyph, ...props}) => (
+  <LinkContainer to={to}>
+    <Breadcrumb.Item {...props}>
+    </Breadcrumb.Item>
+  </LinkContainer>
+)
+
+export default CrumbItem

@@ -1,25 +1,89 @@
-import { Button, Row, Table } from 'react-bootstrap';
+import { Button, Col, Row, Table } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ThirukkuralDetails from '../../json/detail.json'
 import { useState } from 'react';
 import KuralList from './KuralList';
+import { BreadcrumbsItem } from '../template/breadcrumb/BreadcrumbDetails';
+
 function Palgal() {
   const [iyalList, setIyalList] = useState();
   const [chapterList, setChapterList] = useState();
   const [kuralList, setKuralList] = useState();
-  const renderIyalgal = (paalNumber) => ThirukkuralDetails.section.detail.map((paal) => paal.number === paalNumber ? setIyalList(paal.chapterGroup.detail.map((iyal) => iyal)) : "Not found your requested paal");
-  const renderChapters = (iyalNumber) => iyalList.map((iyal) => iyal.number === iyalNumber ? setChapterList(iyal.chapters.detail.map((chapter) => chapter)) : "Not found your requested paal");
-  const renderKurals = (chapterNumber) => chapterList.map((chapter) => chapter.number === chapterNumber ? setKuralList({ start: chapter.start, end: chapter.end }) : "Not found your requested paal");
+  const [showSection, setShowSection] = useState(false);
+  const [showChapterGroup, setShowChapterGroup] = useState(false);
+  const [showChapter, setShowChapter] = useState(false);
+  const [showKural, setShowKural] = useState(false);
+
+  const renderIyalgal = (paalNumber) => ThirukkuralDetails.section.detail.map((paal) => {
+    try {
+      if (paal.number === paalNumber) {
+        setIyalList(paal.chapterGroup.detail.map((iyal) => iyal))
+        setShowChapterGroup(true)
+      }else{
+        setShowSection(false)
+        setShowChapter(false)
+        setShowKural(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  });
+
+  const renderChapters = (iyalNumber) => iyalList.map((iyal) => {
+    try {
+      if (iyal.number === iyalNumber) {
+        setChapterList(iyal.chapters.detail.map((chapter) => chapter))
+        setShowChapter(true)
+      }else{
+        setShowChapterGroup(false)
+        setShowSection(false)
+        setShowKural(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  });
+
+  const renderKurals = (chapterNumber) => chapterList.map((chapter) => {
+    try {
+      if (chapter.number === chapterNumber) {
+        setKuralList({ start: chapter.start, end: chapter.end })
+        setShowKural(true)
+      }else{
+        setShowSection(false)
+        setShowChapterGroup(false)
+        setShowChapter(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  });
+  const clickChapter = () => {
+
+  }
   return (
     <>
-      <div className="row justify-content-center">
-        <div className="col-md-12 col-lg-12 mb-4">
+      <BreadcrumbsItem glyph='home' to='/thirukkural' onClick={()=>{}}>
+        Section
+      </BreadcrumbsItem>
+      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup' onClick={()=>{}}>
+        Chapters Group
+      </BreadcrumbsItem>
+      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup/chapters' onClick={()=>{}}>
+        Chapters
+      </BreadcrumbsItem>
+      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup/chapters/kurals' onClick={()=>{}}>
+        Kurals
+      </BreadcrumbsItem>
+
+      {showSection && <Row className="justify-content-center">
+        <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">
             <Card.Body className='card-body'>
               <Card.Title className='card-title'>பால்கள் (Paalkal)</Card.Title>
               <Card.Subtitle className="mb-3 card-subtitle text-muted">Section</Card.Subtitle>
               <Row>
-                <div className="col-md-4 col-lg-4 mb-4">
+                <Col className="col-md-4 col-lg-4 mb-4">
                   <Card className='bg-label-info'>
                     <Card.Body>
                       <Card.Title className='card-title'>அறத்துப்பால் (Araththuppaal)</Card.Title>
@@ -30,9 +94,9 @@ function Palgal() {
                       <Button onClick={() => renderIyalgal(1)} variant='info'>Read more...</Button>
                     </Card.Footer>
                   </Card>
-                </div>
+                </Col>
 
-                <div className="col-md-4 col-lg-4 mb-4">
+                <Col className="col-md-4 col-lg-4 mb-4">
                   <Card className='bg-label-success'>
                     <Card.Body>
                       <Card.Title className='card-title'>பொருட்பால் (Porutpaal)</Card.Title>
@@ -43,8 +107,8 @@ function Palgal() {
                       <Button onClick={() => renderIyalgal(2)} variant='success'>Read more...</Button>
                     </Card.Footer>
                   </Card>
-                </div>
-                <div className="col-md-4 col-lg-4 mb-4">
+                </Col>
+                <Col className="col-md-4 col-lg-4 mb-4">
                   <Card className='bg-label-warning'>
                     <Card.Body>
                       <Card.Title className='card-title'>காமத்துப்பால் (Kaamaththuppaal)</Card.Title>
@@ -55,13 +119,13 @@ function Palgal() {
                       <Button onClick={() => renderIyalgal(3)} variant='warning'>Read more...</Button>
                     </Card.Footer>
                   </Card>
-                </div>
+                </Col>
               </Row>
             </Card.Body>
           </Card>
-        </div>
-      </div>
-      {iyalList &&
+        </Col>
+      </Row>}
+      {showChapterGroup &&
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-12 mb-4">
             <Card className="card">
@@ -93,7 +157,7 @@ function Palgal() {
         </div>
       }
 
-      {chapterList &&
+      {showChapter &&
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-12 mb-4">
             <Card className="card">
@@ -124,28 +188,8 @@ function Palgal() {
           </div>
         </div>
       }
-      {kuralList &&
+      {showKural &&
         <KuralList kuralList={kuralList} />
-
-        // <div className="row justify-content-center">
-        //   {Thirukkural.map(kural => {
-        //     return (kuralList.start <= kural.Number && kuralList.end >= kural.Number) &&
-        //       <>
-        //         <div className="col-md-12 col-lg-12 mb-4">
-        //           <Card className="card">
-        //             <Card.Body className='card-body'>
-        //               <p>{kural.Line1}<br />{kural.Line2}</p>
-        //               <p>{kural.transliteration1}<br />{kural.transliteration2}</p>
-        //             </Card.Body>
-        //             <Card.Footer>
-        //               <Button onClick={() => renderKuralMeaning(kural.Number)} variant='info'>Read more...</Button>
-        //             </Card.Footer>
-        //           </Card>
-        //         </div>
-        //       </>
-        //   })
-        //   }
-        // </div>
       }
     </>
   )
