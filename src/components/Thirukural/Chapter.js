@@ -2,10 +2,10 @@ import { Button, Col, Row, Table } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ThirukkuralDetails from '../../json/detail.json'
 import { useState } from 'react';
-import KuralList from './KuralList';
+import KuralList from './Kural';
 import { BreadcrumbsItem } from '../template/breadcrumb/BreadcrumbDetails';
 
-function Palgal() {
+function Chapter() {
   const [iyalList, setIyalList] = useState();
   const [chapterList, setChapterList] = useState();
   const [kuralList, setKuralList] = useState();
@@ -63,17 +63,8 @@ function Palgal() {
   }
   return (
     <>
-      <BreadcrumbsItem glyph='home' to='/thirukkural' onClick={()=>{}}>
-        Section
-      </BreadcrumbsItem>
-      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup' onClick={()=>{}}>
-        Chapters Group
-      </BreadcrumbsItem>
-      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup/chapters' onClick={()=>{}}>
+      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup/chapter'>
         Chapters
-      </BreadcrumbsItem>
-      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup/chapters/kurals' onClick={()=>{}}>
-        Kurals
       </BreadcrumbsItem>
 
       {showSection && <Row className="justify-content-center">
@@ -195,4 +186,4 @@ function Palgal() {
   )
 }
 
-export default Palgal;
+export default Chapter;

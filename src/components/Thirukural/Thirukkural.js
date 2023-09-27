@@ -1,4 +1,4 @@
-import Palgal from './Palgal';
+import Section from './Section';
 import Header from '../template/header/Header';
 import LeftSidePanel from '../template/leftsidepanel/LeftSidePanel';
 
@@ -11,7 +11,7 @@ function Thirukkural() {
                     <Header />
                     <div className="content-wrapper">
                         <div className="container-xxl flex-grow-1 container-p-y">
-                            <Palgal />
+                            <Section />
                         </div>
                         <div className="content-backdrop fade"></div>
                     </div>
