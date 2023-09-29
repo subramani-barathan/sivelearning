@@ -1,85 +1,79 @@
-import { Button, Col, Row, Table } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import ThirukkuralDetails from '../../json/detail.json'
-import { useState,useContext, useEffect } from 'react';
-import KuralList from './Kural';
-import { BreadcrumbsItem } from '../template/breadcrumb/BreadcrumbDetails';
-import { KuralContext } from '../contexts/KuralContext';
+import { Button, Col, Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import ThirukkuralDetails from "../../json/detail.json";
+import { useState } from "react";
+import { BreadcrumbsItem } from "../template/breadcrumb/BreadcrumbDetails";
+import Chapters from "./Chapter";
+import getRandomItem from "../constants/RandomColor";
+import { randomColors, randomVarient } from "../constants/constants";
 
-function ChapterGroup() {
-  const [iyalList, setIyalList] = useState();
-  const [chapterList, setChapterList] = useState();
-  const [kuralList, setKuralList] = useState();
-  const value = useContext(KuralContext);
- 
-  const renderIyalgal = (paalNumber) => ThirukkuralDetails.section.detail.map((paal) => {
-    try {
-      if (paal.number === paalNumber) 
-        setIyalList(paal.chapterGroup.detail.map((iyal) => iyal))
-    } catch (error) {
-      console.log(error)
-    }
-  });
+function ChapterGroup(props) {
+  const [chapterGroup, setChapterGroup] = useState();
+  const [chapterGroupName, setChapterGroupName] = useState();
+  const [showChapter, setShowChapter] = useState(false);
+  const [showChapterGroup, setShowChapterGroup] = useState(true);
 
+  const chapterGroupList = ThirukkuralDetails.section.detail
+    .find((section) => section.translation === props.sectionName)
+    .chapterGroup.detail.map((chapterGroup) => chapterGroup);
 
-  const renderChapters = (iyalNumber) => iyalList.map((iyal) => {
-    try {
-      if (iyal.number === iyalNumber) 
-        setChapterList(iyal.chapters.detail.map((chapter) => chapter))
-      
-    } catch (error) {
-      console.log(error)
-    }
-  });
-
-  const renderKurals = (chapterNumber) => chapterList.map((chapter) => {
-    try {
-      if (chapter.number === chapterNumber) 
-        setKuralList({ start: chapter.start, end: chapter.end })
-    } catch (error) {
-      console.log(error)
-    }
-  });
-
+  const renderChapters = (chapterGroupName) => {
+    setChapterGroup(chapterGroupList);
+    setChapterGroupName(chapterGroupName);
+    setShowChapter(true);
+    setShowChapterGroup(false);
+  };
   return (
     <>
-    <KuralContext.Consumer>
-      <BreadcrumbsItem glyph='home' to='/thirukkural/chaptergroup'>
-        Chapters Group
+      <BreadcrumbsItem glyph="home" to={`/thirukkural/${props.sectionName}`}>
+        Chapter Group
       </BreadcrumbsItem>
-      {console.log(value)}
-        <div className="row justify-content-center">
-          <div className="col-md-12 col-lg-12 mb-4">
+
+      {showChapterGroup && (
+        <Row className="justify-content-center">
+          <Col className="col-md-12 col-lg-12 mb-4">
             <Card className="card">
-              <Card.Body className='card-body'>
-                <Table striped bordered hover variant="light">
-                  <thead>
-                    <tr class="info">
-                      <th>#</th>
-                      <th>Tamil</th>
-                      <th>Transliteration</th>
-                      <th>English</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {iyalList.map(iyal => {
-                      return <tr>
-                        <td>{iyal.number}</td>
-                        <td><Button variant='link' onClick={() => { renderChapters(iyal.number) }}>{iyal.name}</Button> </td>
-                        <td>{iyal.transliteration}</td>
-                        <td>{iyal.translation}</td>
-                      </tr>
-                    })
-                    }
-                  </tbody>
-                </Table>
+              <Card.Body className="card-body">
+                <Card.Title className="mt-3">{props.sectionName}</Card.Title>
+                <Row className="justify-content-center d-flex text-white">
+
+                {chapterGroupList.map((iyal) => {
+                  let randomColor = getRandomItem(randomVarient);
+                  return (
+                    <Col className="justify-content-center col-md-4 col-lg-4 mb-4">
+                      <Card className={`bg-label-${randomColor}`}>
+                        <Card.Body>
+                          <p className="text-center">
+                            <Button className={`bg-label-${randomColor}`}
+                              variant="link"
+                              onClick={() => {
+                                renderChapters(iyal.translation);
+                              }}
+                            >
+                              {iyal.name} ({iyal.transliteration}) <br />
+                              {iyal.translation} (Translation)
+                            </Button>
+                          </p>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  );
+                })}
+                </Row>
               </Card.Body>
             </Card>
-          </div>
-        </div>
-        </KuralContext.Consumer>
-        </> 
-  )
+          </Col>
+        </Row>
+      )}
+      {showChapter && (
+        <Chapters
+          chapterGroup={chapterGroup}
+          chapterGroupName={chapterGroupName}
+          sectionName={props.sectionName}
+        />
+      )}
+    </>
+  );
 }
 
 export default ChapterGroup;

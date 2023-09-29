@@ -5,7 +5,7 @@ import CrumbItem from '../breadcrumb/Breadcrumb';
 function Header() {
     return (
         <>
-            <nav
+            {/* <nav
                 className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                 id="layout-navbar"
             >
@@ -100,7 +100,7 @@ function Header() {
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </nav> */}
             <div className='layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme'>
                 <Breadcrumbs
                     item={CrumbItem}
