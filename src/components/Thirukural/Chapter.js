@@ -13,7 +13,7 @@ function Chapter(props) {
   const [chapterName, setChapterName] = useState();
 
   const chapterList = props.chapterGroup
-    .find((chapterGroup) => chapterGroup.translation === props.chapterGroupName)
+    .find((chapterGroup) => chapterGroup.name === props.chapterGroupName)
     .chapters.detail.map((chapter) => chapter);
 
   const renderKurals = (chapter) => {
@@ -30,7 +30,7 @@ function Chapter(props) {
           glyph="home"
           to={`/thirukkural/${props.sectionName}/${props.chapterGroupName}`}
         >
-          Chapters
+          அதிகாரம்
         </BreadcrumbsItem>
         {showChapter && (
           <div className="row justify-content-center">
@@ -42,10 +42,10 @@ function Chapter(props) {
                     {chapterList.map((chapter) => {
                       let randomColor = getRandomItem(randomVarient);
                       return (
-                        <Col className={`col-md-4 col-lg-4 mb-4`}>
+                        <Col className={`col-md-4 col-lg-4 mb-4`} key={chapter.name}>
                           <Card className={`bg-label-${randomColor}`}>
                             <Card.Body>
-                              <p className="text-center">
+                              <div className="text-center">
                                 <Button
                                   className={`bg-label-${randomColor}`}
                                   variant="link"
@@ -53,12 +53,10 @@ function Chapter(props) {
                                     renderKurals(chapter);
                                   }}
                                 >
-                                  {chapter.number} <br /> {chapter.name} (Tamil)
-                                  <br /> {chapter.transliteration}
-                                  (Transliteration)
-                                  <br /> {chapter.translation} (Translation)
+                                  {chapter.number} <br /> {chapter.name}
+                                  <br /> {chapter.translation}
                                 </Button>
-                              </p>
+                              </div>
                             </Card.Body>
                           </Card>
                         </Col>

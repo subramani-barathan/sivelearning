@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BreadcrumbsItem } from "../template/breadcrumb/BreadcrumbDetails";
 import Chapters from "./Chapter";
 import getRandomItem from "../constants/RandomColor";
-import { randomColors, randomVarient } from "../constants/constants";
+import { randomVarient } from "../constants/constants";
 
 function ChapterGroup(props) {
   const [chapterGroup, setChapterGroup] = useState();
@@ -14,7 +14,7 @@ function ChapterGroup(props) {
   const [showChapterGroup, setShowChapterGroup] = useState(true);
 
   const chapterGroupList = ThirukkuralDetails.section.detail
-    .find((section) => section.translation === props.sectionName)
+    .find((section) => section.name === props.sectionName)
     .chapterGroup.detail.map((chapterGroup) => chapterGroup);
 
   const renderChapters = (chapterGroupName) => {
@@ -26,7 +26,7 @@ function ChapterGroup(props) {
   return (
     <>
       <BreadcrumbsItem glyph="home" to={`/thirukkural/${props.sectionName}`}>
-        Chapter Group
+      இயல்கள்
       </BreadcrumbsItem>
 
       {showChapterGroup && (
@@ -40,20 +40,20 @@ function ChapterGroup(props) {
                 {chapterGroupList.map((iyal) => {
                   let randomColor = getRandomItem(randomVarient);
                   return (
-                    <Col className="justify-content-center col-md-4 col-lg-4 mb-4">
+                    <Col className="justify-content-center col-md-4 col-lg-4 mb-4" key={iyal.name}>
                       <Card className={`bg-label-${randomColor}`}>
                         <Card.Body>
-                          <p className="text-center">
+                          <div className="text-center">
                             <Button className={`bg-label-${randomColor}`}
                               variant="link"
                               onClick={() => {
-                                renderChapters(iyal.translation);
+                                renderChapters(iyal.name);
                               }}
                             >
-                              {iyal.name} ({iyal.transliteration}) <br />
-                              {iyal.translation} (Translation)
+                              {iyal.name} <br />
+                              {iyal.translation}
                             </Button>
-                          </p>
+                          </div>
                         </Card.Body>
                       </Card>
                     </Col>

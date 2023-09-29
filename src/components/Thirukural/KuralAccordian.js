@@ -8,6 +8,7 @@ import { Card, Col } from "react-bootstrap";
 
 function KuralAccordian(props) {
   const [showTamil, setShowTamil] = useState(false);
+  const [randomColor] = useState(getRandomItem(randomVarient));
   const [showEnglish, setShowEnglish] = useState(false);
   const [fetchKural, setFetechKural] = useState(false);
 
@@ -23,20 +24,19 @@ function KuralAccordian(props) {
     setFetechKural(kural);
     setShowTamil(true);
   };
-  const randomColor = getRandomItem(randomVarient);
 
   return (
     <>
-      <Col className="col-md-6 col-lg-4 mb-4">
+      <Col className="col-md-6 col-lg-6 mb-4">
         <Card className={`bg-label-${randomColor}`}>
           <Card.Body>
             <p className={`card-text text-${randomColor}`}>
-              {props.kural.transliteration1}
+              {props.kural.Line1}
               <br />
-              {props.kural.transliteration2}
+              {props.kural.Line2}
             </p>
           </Card.Body>
-          <Card.Footer className="d-flex justify-content-between">                       
+          <Card.Footer className="d-flex justify-content-between pt-0">                       
           <Button
               variant="light"
               type="button"
@@ -49,14 +49,14 @@ function KuralAccordian(props) {
               type="button"
               onClick={() => handleShowTamil(props.kural.Number)}
             >
-              Tamil
+              தமிழ்
             </Button>
           </Card.Footer>
         </Card>
       </Col>
-      <Modal show={showEnglish} onHide={handleCloseEnglish} className={`bg-label-${randomColor}`}>
-        <Modal.Header className={`bg-label-${randomColor}`} closeButton>
-          <Modal.Title className={`bg-label-${randomColor}`}>{props.kural.Translation}</Modal.Title>
+      <Modal show={showEnglish} size="lg" onHide={handleCloseEnglish} className={`bg-label-${randomColor}`}>
+        <Modal.Header className={`bg-label-${randomColor} fw-bold pb-3`}>
+          {props.kural.Translation}
         </Modal.Header>
         <Modal.Body>
           <p>{fetchKural.explanation}</p>
@@ -71,29 +71,27 @@ function KuralAccordian(props) {
             {props.kural.adikaram_transliteration} - {props.kural.adikaram_translation}
           </p>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={`bg-label-${randomColor}`}>
           <Button variant="secondary" onClick={handleCloseEnglish}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
-      <Modal show={showTamil} onHide={handleCloseTamil} className={`bg-label-${randomColor}`}>
-        <Modal.Header className={`bg-label-${randomColor}`} closeButton>
-          <Modal.Title className={`bg-label-${randomColor}`}>
+      <Modal show={showTamil} size="lg" onHide={handleCloseTamil} className={`bg-label-${randomColor}`}>
+        <Modal.Header className={`bg-label-${randomColor} fw-bold pb-3`}>
             {props.kural.Line1}
             <br />
             {props.kural.Line2}
-          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{fetchKural.mu_karunanidhi}</p>
-          <p>{fetchKural.mu_varadha}</p>
-          <p>{fetchKural.salaman_papa}</p>
-          <p>{fetchKural.pari_melakar}</p>
-          <p>{fetchKural.mani_kudavar}</p>
-          <p>{fetchKural.v_munusami}</p>
+        {fetchKural.mu_karunanidhi && <p><b>{fetchKural.mu_karunanidhi.split(":")[0]}</b>: {fetchKural.mu_karunanidhi.split(":")[1]}</p>}
+        {fetchKural.mu_varadha && <p><b>{fetchKural.mu_varadha.split(":")[0]}</b>: {fetchKural.mu_varadha.split(":")[1]}</p>}
+        {fetchKural.salaman_papa && <p><b>{fetchKural.salaman_papa.split(":")[0]}</b>: {fetchKural.salaman_papa.split(":")[1]}</p>}
+        {fetchKural.pari_melakar && <p><b>{fetchKural.mu_varadha.split(":")[0]}</b>: {fetchKural.pari_melakar.split(":")[1]}</p>}
+        {fetchKural.mani_kudavar && <p><b>{fetchKural.mani_kudavar.split(":")[0]}</b>: {fetchKural.mani_kudavar.split(":")[1]}</p>}
+        {fetchKural.v_munusami && <p><b>{fetchKural.v_munusami.split(":")[0]}</b>: {fetchKural.v_munusami.split(":")[1]}</p>}
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={`bg-label-${randomColor}`}>
           <Button variant="secondary" onClick={handleCloseTamil}>
             Close
           </Button>

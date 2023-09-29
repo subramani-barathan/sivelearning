@@ -42,7 +42,7 @@ function Header() {
                         </li>
 
                         <li className="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                            <a className="nav-link dropdown-toggle hide-arrow" href="/" data-bs-toggle="dropdown">
                                 <div className="avatar avatar-online">
                                     <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
                                 </div>

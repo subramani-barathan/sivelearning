@@ -1,41 +1,42 @@
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
 import ChapterGroups from "./ChapterGroup";
 import { BreadcrumbsItem } from "../template/breadcrumb/BreadcrumbDetails";
+import Header from '../template/header/Header';
+import LeftSidePanel from '../template/leftsidepanel/LeftSidePanel';
 
 function Chapter() {
-  const [iyalList, setIyalList] = useState();
   const [sectionName, setSectionName] = useState();
-  const [chapterGroupName, setChapterGroupName] = useState();
-  const [chapterName, setChapterName] = useState();
-  const [chapterList, setChapterList] = useState();
-  const [kuralList, setKuralList] = useState();
   const [showSection, setShowSection] = useState(true);
   const [showChapterGroup, setShowChapterGroup] = useState(false);
-  const [showKural, setShowKural] = useState(false);
 
   const renderIyalgal = (sectionName) => {
     setSectionName(sectionName);
     setShowChapterGroup(true);
     setShowSection(false);
-    setShowKural(false);
   };
 
   
   return (
     <>
-      <BreadcrumbsItem glyph="home" to="/thirukkural/">
-        Section
+      <BreadcrumbsItem glyph="home" to="/thirukkural/sections/">
+      பால்கள்
       </BreadcrumbsItem>
-
+      <div className="layout-wrapper layout-content-navbar">
+            <div className="layout-container">
+                <LeftSidePanel />
+                <div className="layout-page">
+                    <Header />
+                    <div className="content-wrapper">
+                        <div className="container-xxl flex-grow-1 container-p-y">
       {showSection && (
         <Row className="justify-content-center">
           <Col className="col-md-12 col-lg-12 mb-4">
             <Card className="card">
               <Card.Body className="card-body">
                 <Card.Title className="card-title">
-                  பால்கள் (Paalkal)
+                  பால்கள்
                 </Card.Title>
                 <Card.Subtitle className="mb-3 card-subtitle text-muted">
                   Section
@@ -45,25 +46,25 @@ function Chapter() {
                     <Card className="bg-label-info">
                       <Card.Body>
                         <Card.Title className="card-title">
-                          அறத்துப்பால் (Araththuppaal)
+                          அறத்துப்பால்
                         </Card.Title>
                         <Card.Subtitle className="mb-3 card-subtitle text-muted">
                           Virtue
                         </Card.Subtitle>
-                        <p>
+                        <div>
                           அறம் (Aram) அறத்துப்பால் (Arathupal) திருக்குறளின்
                           முப்பல்களில் முதற் 'பால்' ஆகும். அறம் பகுதி உரையில்
                           திருவள்ளுவர் நல்வழி, ஒழுங்கு, தர்மம் போன்ற
                           கருத்துக்களைக் குறிபிட்டுள்ளார். அறத்துப்பால்
-                          கீழ்காணும் இயல்களாக பகுகபட்டுள்ளன. (Arathupal)
-                        </p>
+                          கீழ்காணும் இயல்களாக பகுகபட்டுள்ளன.
+                        </div>
                       </Card.Body>
-                      <Card.Footer>
+                      <Card.Footer className="align-self-end pt-0">
                         <Button
-                          onClick={() => renderIyalgal("Virtue")}
+                          onClick={() => renderIyalgal("அறத்துப்பால்")}
                           variant="info"
                         >
-                          Read more...
+                          இயல்கள்
                         </Button>
                       </Card.Footer>
                     </Card>
@@ -73,25 +74,25 @@ function Chapter() {
                     <Card className="bg-label-success">
                       <Card.Body>
                         <Card.Title className="card-title">
-                          பொருட்பால் (Porutpaal)
+                          பொருட்பால்
                         </Card.Title>
                         <Card.Subtitle className="mb-3 card-subtitle text-muted">
                           Wealth
                         </Card.Subtitle>
-                        <p>
+                        <div>
                           பொருள் (Porul) பொருட்பால் (Porutpal) திருக்குறளின்
                           முப்பல்களில் இரண்டாம் 'பால்' ஆகும். இவ்வுலகத்தில் உள்ள
                           அனைத்தும் பொருட்களால் ஆனது. பொருள் அல்லது பொருட்பால்
                           பகுதியை திருவள்ளுவர் கீழ்காணும் இயல்களாக
-                          பகுத்துள்ளார். (Porutpal)
-                        </p>
+                          பகுத்துள்ளார்.
+                        </div>
                       </Card.Body>
-                      <Card.Footer>
+                      <Card.Footer className="align-self-end pt-0">
                         <Button
-                          onClick={() => renderIyalgal("Wealth")}
+                          onClick={() => renderIyalgal("பொருட்பால்")}
                           variant="success"
                         >
-                          Read more...
+                          இயல்கள்
                         </Button>
                       </Card.Footer>
                     </Card>
@@ -99,27 +100,27 @@ function Chapter() {
                   <Col className="col-md-4 col-lg-4 mb-4">
                     <Card className="bg-label-warning">
                       <Card.Body>
-                        <Card.Title className="card-title">
-                          காமத்துப்பால் (Kaamaththuppaal)
+                        <Card.Title className="card-title tamil-font">
+                          காமத்துப்பால்
                         </Card.Title>
                         <Card.Subtitle className="mb-3 card-subtitle text-muted">
                           Love
                         </Card.Subtitle>
-                        <p>
+                        <div>
                           இன்பம் (Inbam) இன்பத்துப்பால் (Inbathupal)
                           திருக்குறளின் மூன்றாம் 'பால்' ஆகும். இன்பம் பகுதி
                           உரையில் திருவள்ளுவர் அன்பு, அறம், பொருள், வீடு என்ற
                           வாழ்வின் நோக்கங்கள் பற்றிய கருத்துக்களை
                           குறிபிட்டுள்ளார். இன்பத்துப்பால் கீழ்காணும் இயல்களாக
-                          பகுகபட்டுள்ளன. (Inbathupal)
-                        </p>
+                          பகுகபட்டுள்ளன.
+                        </div>
                       </Card.Body>
-                      <Card.Footer>
+                      <Card.Footer className="align-self-end pt-0">
                         <Button
-                          onClick={() => renderIyalgal("Love")}
+                          onClick={() => renderIyalgal("காமத்துப்பால்")}
                           variant="warning"
                         >
-                          Read more...
+                          இயல்கள்
                         </Button>
                       </Card.Footer>
                     </Card>
@@ -130,6 +131,13 @@ function Chapter() {
           </Col>
         </Row>
       )}
+       </div>
+                        <div className="content-backdrop fade"></div>
+                    </div>
+                </div>
+            </div>
+            <div className="layout-overlay layout-menu-toggle"></div>
+        </div>
       {showChapterGroup && <ChapterGroups sectionName={sectionName} />}
     </>
   );

@@ -11,7 +11,7 @@ function Kural(props) {
         glyph="home"
         to="/thirukkural/chaptergroup/chapter/kural"
       >
-        Kurals
+        குறள்கள்
       </BreadcrumbsItem>
       <Col className="col-md-12 col-lg-12 mb-4">
         <Card className="card">

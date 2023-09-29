@@ -2,7 +2,9 @@
 * demo.css
 * File include item demo only specific css only
 ******************************************************************************/
-
+body{
+  font-family:  'Noto Sans Tamil', sans-serif !important;
+}
 .menu .app-brand.demo {
   height: 64px;
   margin-top: 12px;
@@ -104,4 +106,8 @@
 .layout-demo-info {
   text-align: center;
   margin-top: 1rem;
+}
+
+.tamil-font{
+  font-family:  'Noto Sans Tamil', sans-serif;
 }

@@ -27,7 +27,7 @@ function LeftSidePanel() {
                 id="path-5"
               ></path>
             </defs>
-            <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="g-app-brand" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
                 <g id="Icon" transform="translate(27.000000, 15.000000)">
                   <g id="Mask" transform="translate(0.000000, 8.000000)">
@@ -37,11 +37,11 @@ function LeftSidePanel() {
                     <use fill="#696cff"></use>
                     <g id="Path-3" mask="url(#mask-2)">
                       <use fill="#696cff"></use>
-                      <use fill-opacity="0.2" fill="#FFFFFF"></use>
+                      <use fillOpacity="0.2" fill="#FFFFFF"></use>
                     </g>
                     <g id="Path-4" mask="url(#mask-2)">
                       <use fill="#696cff"></use>
-                      <use fill-opacity="0.2" fill="#FFFFFF"></use>
+                      <use fillOpacity="0.2" fill="#FFFFFF"></use>
                     </g>
                   </g>
                   <g
@@ -49,17 +49,17 @@ function LeftSidePanel() {
                     transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) "
                   >
                     <use fill="#696cff"></use>
-                    <use fill-opacity="0.2" fill="#FFFFFF"></use>
+                    <use fillOpacity="0.2" fill="#FFFFFF"></use>
                   </g>
                 </g>
               </g>
             </g>
           </svg>
         </span>
-        <span className="app-brand-text demo menu-text fw-bolder ms-2">SivELearning</span>
+        <span className="app-brand-text demo menu-text fw-bolder ms-2">Smart Learning</span>
       </a>
 
-      <a href="javascript:void(0);" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <a href="/" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
         <i className="bx bx-chevron-left bx-sm align-middle"></i>
       </a>
     </div>
@@ -78,7 +78,7 @@ function LeftSidePanel() {
       </li>
 
       <li className="menu-item">
-        <a href="javascript:void(0);" className="menu-link menu-toggle">
+        <a href="/" className="menu-link menu-toggle">
           <i className="menu-icon tf-icons bx bx-layout"></i>
           <div data-i18n="Layouts">Layouts</div>
         </a>
