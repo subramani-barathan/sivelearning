@@ -111,3 +111,10 @@ body{
 .tamil-font{
   font-family:  'Noto Sans Tamil', sans-serif;
 }
+
+.corner-label {
+  border-radius: 0 10px;
+  width: 60px;
+  text-align: center;
+  font-weight: bold;
+}

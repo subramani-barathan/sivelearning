@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import {
   ThroughProvider,
@@ -6,98 +6,101 @@ import {
   throughAgent,
   createAdvAgent,
   throughInterface,
-} from 'react-through'
+} from "react-through";
 
+export const breadcrumbsThroughArea = "breadcrumbs";
 
-export const breadcrumbsThroughArea = 'breadcrumbs'
+export const breadcrumbsBearingKey = "to";
 
-export const breadcrumbsBearingKey = 'to'
+export const withBreadcrumbs = throughInterface(breadcrumbsThroughArea);
 
-export const withBreadcrumbs = throughInterface(breadcrumbsThroughArea)
+export const withBreadcrumbsItem = throughAgent(
+  breadcrumbsThroughArea,
+  breadcrumbsBearingKey
+);
 
-export const withBreadcrumbsItem = throughAgent(breadcrumbsThroughArea, breadcrumbsBearingKey)
+export const withBreadcrumbsContainer = throughContainer(
+  breadcrumbsThroughArea
+);
 
-export const withBreadcrumbsContainer = throughContainer(breadcrumbsThroughArea)
+export const Dummy = () => null;
 
-export const Dummy = () => null
+export const Item = () => null;
 
-export const Item = () => null
+export const BreadcrumbsProvider = ThroughProvider;
 
-export const BreadcrumbsProvider = ThroughProvider
-
-export const BreadcrumbsItem = createAdvAgent(breadcrumbsThroughArea, breadcrumbsBearingKey)
-
+export const BreadcrumbsItem = createAdvAgent(
+  breadcrumbsThroughArea,
+  breadcrumbsBearingKey
+);
 
 function prepareProps(props, rename, duplicate, remove) {
-  const p = Object.assign({}, props)
-  Object.keys(duplicate).forEach(k => {
-    p[duplicate[k]] = p[k]
-  })
-  Object.keys(rename).forEach(k => {
-    p[rename[k]] = p[k]; delete p[k]
-  })
-  Object.keys(remove).forEach(k => {
-    delete p[k]
-  })
-  return p
+  const p = Object.assign({}, props);
+  Object.keys(duplicate).forEach((k) => {
+    p[duplicate[k]] = p[k];
+  });
+  Object.keys(rename).forEach((k) => {
+    p[rename[k]] = p[k];
+    delete p[k];
+  });
+  Object.keys(remove).forEach((k) => {
+    delete p[k];
+  });
+  return p;
 }
 
-const defaultCompare = (a, b) => (
-  a[breadcrumbsBearingKey].length - b[breadcrumbsBearingKey].length
-)
+const defaultCompare = (a, b) =>
+  a[breadcrumbsBearingKey].length - b[breadcrumbsBearingKey].length;
 
 const Breadcrumbs_ = (props) => {
   const {
-    container: Container = 'span',
+    container: Container = "span",
     containerProps,
     hideIfEmpty = false,
-    item: Item = 'a',
+    item: Item = "a",
     finalItem: FinalItem = Item,
     finalProps = {},
     separator,
     duplicateProps: duplicate = {},
-    removeProps: remove  = {},
-    renameProps: rename = (Item === 'a' ? {to: 'href'} : {}),
-    compare
-  } = props
-  const data = props[breadcrumbsThroughArea]
-  const itemsValue = Object
-    .keys(data)
-    .map(k => data[k])
-    .sort(compare || defaultCompare)
-  const count = itemsValue.length
+    removeProps: remove = {},
+    renameProps: rename = Item === "a" ? { to: "href" } : {},
+    compare,
+  } = props;
+  const data = props[breadcrumbsThroughArea];
+  const itemsValue = Object.keys(data)
+    .map((k) => data[k])
+    .sort(compare || defaultCompare);
+  const count = itemsValue.length;
 
   if (hideIfEmpty && count === 0) {
-    return null
+    return null;
   }
 
   return (
-    <Container {...containerProps} >
-
+    <Container {...containerProps}>
       {itemsValue.map((itemValue, i) => {
-        return i+1 < count ? (
-
+        return i + 1 < count ? (
           separator ? (
             <span key={i}>
-              <Item {...prepareProps(itemValue, rename, duplicate, remove)} />
+              <Item {...prepareProps(itemValue, rename, duplicate, remove)}  className='mb-0'/>
               {separator}
             </span>
           ) : (
-            <Item key={i} {...prepareProps(itemValue, rename, duplicate, remove)} />
+            <Item
+              key={i}
+              {...prepareProps(itemValue, rename, duplicate, remove)}
+            />
           )
-
         ) : (
-
-          <FinalItem key={i}
+          <FinalItem
+            key={i}
             {...prepareProps(itemValue, rename, duplicate, remove)}
             {...finalProps}
           />
-
-        )
+        );
       })}
-
     </Container>
-  )
-}
+  );
+};
 
-export const Breadcrumbs = withBreadcrumbsContainer(Breadcrumbs_)
+export const Breadcrumbs = withBreadcrumbsContainer(Breadcrumbs_);

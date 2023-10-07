@@ -29,6 +29,13 @@ function KuralAccordian(props) {
     <>
       <Col className="col-md-6 col-lg-6 mb-4">
         <Card className={`bg-label-${randomColor}`}>
+          <Card.Header className="d-flex justify-content-end align-item-center p-0">
+            <span
+              className={`bg-${randomColor} text-white py-1 px-2 align-middle corner-label`}
+            >
+              {props.kural.Number}
+            </span>
+          </Card.Header>
           <Card.Body>
             <p className={`card-text text-${randomColor}`}>
               {props.kural.Line1}
@@ -36,8 +43,8 @@ function KuralAccordian(props) {
               {props.kural.Line2}
             </p>
           </Card.Body>
-          <Card.Footer className="d-flex justify-content-between pt-0">                       
-          <Button
+          <Card.Footer className="d-flex justify-content-between pt-0">
+            <Button
               variant="light"
               type="button"
               onClick={() => handleShowEnglish(props.kural.Number)}
@@ -54,9 +61,17 @@ function KuralAccordian(props) {
           </Card.Footer>
         </Card>
       </Col>
-      <Modal show={showEnglish} size="lg" onHide={handleCloseEnglish} className={`bg-label-${randomColor}`}>
+      <Modal
+        show={showEnglish}
+        size="lg"
+        onHide={handleCloseEnglish}
+        className={`bg-label-${randomColor}`}
+      >
         <Modal.Header className={`bg-label-${randomColor} fw-bold pb-3`}>
-          {props.kural.Translation}
+          <p className="kural-list mb-0">
+            <span className="float-list">{props.kural.Number}.</span>{" "}
+            {props.kural.Translation}
+          </p>
         </Modal.Header>
         <Modal.Body>
           <p>{fetchKural.explanation}</p>
@@ -68,7 +83,8 @@ function KuralAccordian(props) {
             {props.kural.iyal_transliteration} - {props.kural.iyal_translation}
           </p>
           <p>
-            {props.kural.adikaram_transliteration} - {props.kural.adikaram_translation}
+            {props.kural.adikaram_transliteration} -{" "}
+            {props.kural.adikaram_translation}
           </p>
         </Modal.Body>
         <Modal.Footer className={`bg-label-${randomColor}`}>
@@ -77,19 +93,57 @@ function KuralAccordian(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Modal show={showTamil} size="lg" onHide={handleCloseTamil} className={`bg-label-${randomColor}`}>
+      <Modal
+        show={showTamil}
+        size="lg"
+        onHide={handleCloseTamil}
+        className={`bg-label-${randomColor}`}
+      >
         <Modal.Header className={`bg-label-${randomColor} fw-bold pb-3`}>
+          <p className="kural-list mb-0">
+            <span className="float-list">{props.kural.Number}.</span>{" "}
             {props.kural.Line1}
             <br />
             {props.kural.Line2}
+          </p>
         </Modal.Header>
         <Modal.Body>
-        {fetchKural.mu_karunanidhi && <p><b>{fetchKural.mu_karunanidhi.split(":")[0]}</b>: {fetchKural.mu_karunanidhi.split(":")[1]}</p>}
-        {fetchKural.mu_varadha && <p><b>{fetchKural.mu_varadha.split(":")[0]}</b>: {fetchKural.mu_varadha.split(":")[1]}</p>}
-        {fetchKural.salaman_papa && <p><b>{fetchKural.salaman_papa.split(":")[0]}</b>: {fetchKural.salaman_papa.split(":")[1]}</p>}
-        {fetchKural.pari_melakar && <p><b>{fetchKural.mu_varadha.split(":")[0]}</b>: {fetchKural.pari_melakar.split(":")[1]}</p>}
-        {fetchKural.mani_kudavar && <p><b>{fetchKural.mani_kudavar.split(":")[0]}</b>: {fetchKural.mani_kudavar.split(":")[1]}</p>}
-        {fetchKural.v_munusami && <p><b>{fetchKural.v_munusami.split(":")[0]}</b>: {fetchKural.v_munusami.split(":")[1]}</p>}
+          {fetchKural.mu_karunanidhi && (
+            <p>
+              <b>{fetchKural.mu_karunanidhi.split(":")[0]}</b>:{" "}
+              {fetchKural.mu_karunanidhi.split(":")[1]}
+            </p>
+          )}
+          {fetchKural.mu_varadha && (
+            <p>
+              <b>{fetchKural.mu_varadha.split(":")[0]}</b>:{" "}
+              {fetchKural.mu_varadha.split(":")[1]}
+            </p>
+          )}
+          {fetchKural.salaman_papa && (
+            <p>
+              <b>{fetchKural.salaman_papa.split(":")[0]}</b>:{" "}
+              {fetchKural.salaman_papa.split(":")[1]}
+            </p>
+          )}
+          {fetchKural.pari_melakar && (
+            <p>
+              <b>{fetchKural.mu_varadha.split(":")[0]}</b>:{" "}
+              {fetchKural.pari_melakar.split(":")[1]}
+            </p>
+          )}
+          {fetchKural.mani_kudavar && (
+            <p>
+              <b>{fetchKural.mani_kudavar.split(":")[0]}</b>:{" "}
+              {fetchKural.mani_kudavar.split(":")[1]}
+            </p>
+          )}
+          {fetchKural.v_munusami && (
+            <p>
+              <b>{fetchKural.v_munusami.split(":")[0]}</b>:{" "}
+              {fetchKural.v_munusami.split(":")[1]}
+            </p>
+          )}
         </Modal.Body>
         <Modal.Footer className={`bg-label-${randomColor}`}>
           <Button variant="secondary" onClick={handleCloseTamil}>
