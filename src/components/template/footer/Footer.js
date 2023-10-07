@@ -6,7 +6,7 @@ function Footer(){
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            <a href="https://themeselection.com" target="_blank" className="footer-link fw-bolder">SivELearning</a>
+            <a href="https://themeselection.com" target="_blank" className="footer-link fw-bolder">Smart Learning</a>
         </div>
         <div>
             <a href="https://themeselection.com/license/" className="footer-link me-4" target="_blank">License</a>
