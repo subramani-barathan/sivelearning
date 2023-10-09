@@ -22,7 +22,7 @@ function App() {
                 Home
               </BreadcrumbsItem>
               <Routes>
-                <Route path="/" element={<Thirukkural />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/thirukkural" element={<Thirukkural />}></Route>
                 <Route
                   path="/thirukkural/sections"

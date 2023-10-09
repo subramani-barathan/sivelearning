@@ -29,6 +29,7 @@ function Kural() {
       <BreadcrumbsItem glyph="home" to={`/thirukkural/sections/${kurals[0].paul_translation}/${kurals[0].iyal_translation}/${kuralid}`}>
         குறள்கள்
       </BreadcrumbsItem>
+      <h1>குறள்கள்</h1>
       <Row className="justify-content-center">
         <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">

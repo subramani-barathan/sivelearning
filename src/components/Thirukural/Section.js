@@ -18,6 +18,7 @@ function Section() {
       <BreadcrumbsItem glyph="home" to="/thirukkural/sections">
         பால்கள்
       </BreadcrumbsItem>
+      <h1>பால்கள்</h1>
       <Row className="justify-content-center">
         <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">

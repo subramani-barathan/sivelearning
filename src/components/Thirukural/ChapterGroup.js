@@ -32,6 +32,7 @@ function ChapterGroup() {
       <BreadcrumbsItem glyph="home" to={`/thirukkural/sections/${chgrpid}`}>
         இயல்கள்
       </BreadcrumbsItem>
+      <h1>இயல்கள்</h1>
       <Row className="justify-content-center">
         <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">

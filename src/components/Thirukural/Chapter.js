@@ -46,7 +46,8 @@ function Chapter(props) {
       <BreadcrumbsItem glyph="home" to={`/thirukkural/sections/${chgrpid}/${chid}`}>
         அதிகாரம்
       </BreadcrumbsItem>
-      <Row>
+            <h1>அதிகாரம்</h1>
+            <Row>
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-12 mb-4">
             <Card className="card">

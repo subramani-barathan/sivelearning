@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "../breadcrumb/BreadcrumbDetails";
 import { Breadcrumb as BootstrapBreadcrumb } from "react-bootstrap";
 import CrumbItem from "../breadcrumb/Breadcrumb";
-import ProfileImage from "../../../assets/img/avatars/1.png";
+import ProfileImage from "../../../assets/avatars/1.png";
 import kuralJSON from "../../../json/kural.json";
 import { useState } from "react";
 import SearchList from "../../SearchList";
