@@ -3,8 +3,11 @@ const sitemap = require('sitemap');
 
     const urls = [
       { url: '/', changefreq: 'daily', priority: 1 },
-      { url: '/about', changefreq: 'monthly', priority: 0.8 },
-      { url: '/contact', changefreq: 'monthly', priority: 0.8 },
+      { url: '/thirukkural', changefreq: 'daily', priority: 0.8 },
+      { url: '/thirukkural/sections', changefreq: 'daily', priority: 0.8 },
+      { url: '/thirukkural/sections/:chgrpid', changefreq: 'daily', priority: 0.8 },
+      { url: '/thirukkural/sections/:chgrpid/:chid', changefreq: 'daily', priority: 0.8 },
+      { url: '/thirukkural/sections/:chgrpid/:chid/:kuralid', changefreq: 'daily', priority: 0.8 },
       // Add additional pages here
     ];
 

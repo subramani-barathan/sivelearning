@@ -55,16 +55,7 @@ function Header() {
 
           <ul className="navbar-nav flex-row align-items-center ms-auto">
             <li className="nav-item lh-1 me-3">
-              <a
-                className="github-button"
-                href="https://github.com/themeselection/sneat-html-admin-template-free"
-                data-icon="octicon-star"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-              >
                 Star
-              </a>
             </li>
 
             <li className="nav-item navbar-dropdown dropdown-user dropdown">
@@ -141,7 +132,7 @@ function Header() {
           </ul>
         </div>
       </nav>
-      <div className="container-xxl flex-grow-1 container-p-y">
+      <div className="container-xxl container-p-y">
         <Breadcrumbs
           item={CrumbItem}
           container={BootstrapBreadcrumb}

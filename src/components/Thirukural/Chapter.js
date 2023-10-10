@@ -46,13 +46,13 @@ function Chapter(props) {
       <BreadcrumbsItem glyph="home" to={`/thirukkural/sections/${chgrpid}/${chid}`}>
         அதிகாரம்
       </BreadcrumbsItem>
-            <h1>அதிகாரம்</h1>
             <Row>
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-12 mb-4">
             <Card className="card">
               <Card.Body className="card-body">
-                <Card.Title>{chapterGroup.name} </Card.Title>
+              <h1 className="title">{chapterGroup.name}</h1>
+            <h3 className="sub-title text-muted">{chapterGroup.translation}</h3>
                 <Row className="justify-content-center d-flex text-white">
                   {chapters.map((chapter) => {
                     let randomColor = getRandomItem(randomVarient);

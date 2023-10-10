@@ -6,21 +6,21 @@ function Footer(){
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            <a href="https://themeselection.com" target="_blank" className="footer-link fw-bolder">Smart Learning</a>
+            <a href="/" target="_blank" className="footer-link fw-bolder">Smart Learning</a>
         </div>
         <div>
-            <a href="https://themeselection.com/license/" className="footer-link me-4" target="_blank">License</a>
-            <a href="https://themeselection.com/" target="_blank" className="footer-link me-4">More Themes</a>
+            <a href="/" className="footer-link me-4" target="_blank">License</a>
+            <a href="/" target="_blank" className="footer-link me-4">More Themes</a>
 
             <a
-                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                href="/"
                 target="_blank"
                 className="footer-link me-4"
             >Documentation</a
             >
 
             <a
-                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                href="/"
                 target="_blank"
                 className="footer-link me-4"
             >Support</a

@@ -18,15 +18,14 @@ function Section() {
       <BreadcrumbsItem glyph="home" to="/thirukkural/sections">
         பால்கள்
       </BreadcrumbsItem>
-      <h1>பால்கள்</h1>
       <Row className="justify-content-center">
         <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">
             <Card.Body className="card-body">
-              <Card.Title className="card-title">பால்கள்</Card.Title>
-              <Card.Subtitle className="mb-3 card-subtitle text-muted">
+              <h1 className="title">பால்கள்</h1>
+              <h3 className="subtitle text-muted">
                 Section
-              </Card.Subtitle>
+              </h3>
               <Row>
                 <Col className="col-md-4 col-lg-4 mb-4">
                   <Card className="bg-label-info">

@@ -32,12 +32,12 @@ function ChapterGroup() {
       <BreadcrumbsItem glyph="home" to={`/thirukkural/sections/${chgrpid}`}>
         இயல்கள்
       </BreadcrumbsItem>
-      <h1>இயல்கள்</h1>
       <Row className="justify-content-center">
         <Col className="col-md-12 col-lg-12 mb-4">
           <Card className="card">
             <Card.Body className="card-body">
-              <Card.Title className="mt-3">{section.name}</Card.Title>
+            <h1 className="title">{section.name}</h1>
+            <h3 className="sub-title  text-muted">{section.translation}</h3>
               <Row className="justify-content-center d-flex text-white">
                 {chapterGroupList.map((iyal) => {
                   let randomColor = getRandomItem(randomVarient);
