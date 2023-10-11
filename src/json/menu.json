@@ -1,0 +1,89 @@
+[
+    {
+        "id": "menu-1",
+        "text": "Thirukkural",
+        "header": true,
+        "menu": []
+    },
+    {
+        "id": "menu-2",
+        "text": "Thirukkural",
+        "link": "./thirukkural",
+        "header": false,
+        "menu": []
+    },
+    {
+        "id": "menu-3",
+        "text": "Layouts",
+        "header": false,
+        "menu": [
+            {
+                "id": "submenu-1",
+                "text": "Without Menu",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-2",
+                "text": "Without Navbar",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-3",
+                "text": "Container",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-4",
+                "text": "Fluid",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-5",
+                "text": "Blank",
+                "header": false,
+                "menu": []
+            }
+        ]
+    },
+    {
+        "id": "menu-4",
+        "text": "Link 1",
+        "header": false,
+        "menu": [
+            {
+                "id": "submenu-1",
+                "text": "Without Menu",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-2",
+                "text": "Without Navbar",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-3",
+                "text": "Container",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-4",
+                "text": "Fluid",
+                "header": false,
+                "menu": []
+            },
+            {
+                "id": "submenu-5",
+                "text": "Blank",
+                "header": false,
+                "menu": []
+            }
+        ]
+    }
+]
