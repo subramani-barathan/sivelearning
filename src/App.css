@@ -7,6 +7,7 @@
 @import url("./assets/vendor/css/pages/page-icons.css");
 @import url("./assets/vendor/css/pages/page-misc.css");
 @import url("./assets/vendor/fonts/boxicons.css");
+
 .App {
   text-align: center;
 }
@@ -41,6 +42,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -50,10 +52,18 @@ p.kural-list {
   text-indent: -45px;
   padding-left: 45px;
 }
+
 span.float-list {
   width: 45px;
   float: left;
 }
-.breadcrumb{
+
+.breadcrumb {
   margin-bottom: 0 !important;
+}
+
+.app-brand-textmenu-text {
+  font-size: 24px;
+  margin: 0;
+  padding: 20px 0;
 }

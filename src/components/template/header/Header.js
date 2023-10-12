@@ -1,31 +1,39 @@
 import { Breadcrumbs } from "../breadcrumb/BreadcrumbDetails";
-import { Breadcrumb as BootstrapBreadcrumb } from "react-bootstrap";
+import { Breadcrumb as BootstrapBreadcrumb, Button } from "react-bootstrap";
 import CrumbItem from "../breadcrumb/Breadcrumb";
 import ProfileImage from "../../../assets/avatars/1.png";
 import kuralJSON from "../../../json/kural.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SearchList from "../../SearchList";
 import { Link } from "react-router-dom";
+import SidebarContext from "../../contexts/SidebarContext";
 
 
 function Header() {
   const [searchField, setSearchField] = useState("");
+  const {enabledSidebar, setEnabledSidebar} = useContext(SidebarContext);
 
   const filteredKurals = kuralJSON.filter((kural) => {
     return (
-        kural ? kural.Number.toString().includes(searchField) ||
+      kural ? kural.Number.toString().includes(searchField) ||
         kural.Line1.toLowerCase().includes(searchField.toLowerCase()) ||
         kural.Line2.toLowerCase().includes(searchField.toLowerCase()) ||
         kural.Translation.toLowerCase().includes(searchField.toLowerCase()) ||
         kural.couplet.toLowerCase().includes(searchField.toLowerCase()) ||
         kural.explanation.toLowerCase().includes(searchField.toLowerCase()) ||
         kural.transliteration1.toLowerCase().includes(searchField.toLowerCase()) ||
-        kural.transliteration2.toLowerCase().includes(searchField.toLowerCase()):""
+        kural.transliteration2.toLowerCase().includes(searchField.toLowerCase()) : ""
     );
   });
+
   const handleChange = (e) => {
     setSearchField(e.target.value);
   };
+  
+  const toggleSidebar = () => {
+    setEnabledSidebar(!enabledSidebar)
+  }
+
   return (
     <>
       <nav
@@ -33,9 +41,9 @@ function Header() {
         id="layout-navbar"
       >
         <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-          <Link className="nav-item nav-link px-0 me-xl-4" href="/">
+          <span className="nav-item nav-link px-0 me-xl-4" onClick={toggleSidebar}>
             <i className="bx bx-menu bx-sm"></i>
-          </Link>
+          </span>
         </div>
 
         <div
@@ -50,14 +58,14 @@ function Header() {
                 className="form-control border-0 shadow-none"
                 placeholder="Search..."
                 aria-label="Search..."
-                onChange = {handleChange}
+                onChange={handleChange}
               />
             </div>
           </div>
 
           <ul className="navbar-nav flex-row align-items-center ms-auto">
             <li className="nav-item lh-1 me-3">
-                Star
+              Star
             </li>
 
             <li className="nav-item navbar-dropdown dropdown-user dropdown">
@@ -141,7 +149,7 @@ function Header() {
           duplicateProps={{ to: "href" }}
         />
       </div>
-      {searchField && <SearchList kural={filteredKurals}/>}
+      {searchField && <SearchList kural={filteredKurals} />}
     </>
   );
 }

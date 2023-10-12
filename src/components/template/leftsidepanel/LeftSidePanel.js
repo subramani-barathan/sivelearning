@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Menu from "../../../json/menu.json"
 import { Link } from "react-router-dom";
+import SidebarContext from "../../contexts/SidebarContext";
 
 function LeftSidePanel() {
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const {enabledSidebar, setEnabledSidebar} = useContext(SidebarContext);
+
   const [menuId, setMenuId] = useState("");
   const clickMenuItem =  (menuItem) => {
      Menu.map((menu) => {
@@ -17,17 +20,21 @@ function LeftSidePanel() {
     });
   }
 
+  const toggleSidebar = () => {
+    setEnabledSidebar(!enabledSidebar)
+  }
+
   return (<aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme">
-    <div className="app-brand demo">
+    <div className="app-brand">
       <a href="/" className="app-brand-link">
-        <span className="app-brand-logo demo">
+        <span className="app-brand-logo">
         </span>
-        <h1 className="app-brand-text demo menu-text fw-bolder ms-2">Smart Learning</h1>
+        <h1 className="app-brand-textmenu-text fw-bolder ms-2">Smart Learning</h1>
       </a>
 
-      <a href="/" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <span className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"  onClick={toggleSidebar}>
         <i className="bx bx-chevron-left bx-sm align-middle"></i>
-      </a>
+      </span>
     </div>
 
     <div className="menu-inner-shadow"></div>

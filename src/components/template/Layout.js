@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import "../../App.css";
 import { BreadcrumbsItem } from "./breadcrumb/BreadcrumbDetails";
 import Header from "./header/Header";
 import LeftSidePanel from "./leftsidepanel/LeftSidePanel";
 import { Outlet } from "react-router-dom";
+import SidebarContext from "../contexts/SidebarContext";
 function Layout() {
+  const {enabledSidebar} = useContext(SidebarContext);
   return (
-    <div className="layout-wrapper layout-content-navbar">
+    <div className={`layout-wrapper layout-content-navbar ${enabledSidebar ? "layout-menu-expanded" : ""}`}>
       <div className="layout-container">
         <LeftSidePanel />
         <div className="layout-page">
@@ -15,7 +18,7 @@ function Layout() {
               <BreadcrumbsItem glyph="home" to="/">
                 Home
               </BreadcrumbsItem>
-              <Outlet/>
+              <Outlet />
             </div>
             <div className="content-backdrop fade"></div>
           </div>

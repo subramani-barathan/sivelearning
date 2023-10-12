@@ -8,9 +8,14 @@ import Section from "./components/Thirukural/Section";
 import Layout from "./components/template/Layout";
 import Dashboard from "./components/Dashboard";
 import { BreadcrumbsProvider } from './components/template/breadcrumb/BreadcrumbDetails';
+import SidebarContext from "./components/contexts/SidebarContext";
+import { useState } from "react";
 function App() {
+  const [enabledSidebar, setEnabledSidebar] = useState(false)
+
   return (
-<BreadcrumbsProvider>
+<SidebarContext.Provider value={{enabledSidebar, setEnabledSidebar}}>
+  <BreadcrumbsProvider>
     <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
@@ -31,6 +36,7 @@ function App() {
         </Route>
       </Routes>
       </BreadcrumbsProvider>
+      </SidebarContext.Provider>
   );
 }
 
