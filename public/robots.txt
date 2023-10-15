@@ -5,4 +5,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://muppal.netlify.app/sitemap.xml
+Sitemap: https://interviewnotez.com/sitemap.xml
