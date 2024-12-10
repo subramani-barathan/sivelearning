@@ -54,11 +54,8 @@ function ChapterGroup() {
                             {iyal.number}
                           </span>
                         </Card.Header>
-                        <Card.Body>
-                          <div className="text-center">
-                            <Button
-                              className={`bg-label-${randomColor}`}
-                              variant="link"
+                        <Card.Body
+                              className={`text-center bg-label-${randomColor}`}
                               onClick={() => {
                                 renderChapters(
                                   section.translation,
@@ -68,8 +65,6 @@ function ChapterGroup() {
                             >
                               {iyal.name} <br />
                               {iyal.translation}
-                            </Button>
-                          </div>
                         </Card.Body>
                       </Card>
                     </Col>

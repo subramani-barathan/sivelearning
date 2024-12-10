@@ -28,7 +28,7 @@ function Section() {
               </h3>
               <Row>
                 <Col className="col-md-4 col-lg-4 mb-4">
-                  <Card className="bg-label-info">
+                  <Card className="bg-label">
                     <Card.Body>
                       <Card.Title className="card-title">
                         அறத்துப்பால்
@@ -56,7 +56,7 @@ function Section() {
                 </Col>
 
                 <Col className="col-md-4 col-lg-4 mb-4">
-                  <Card className="bg-label-success">
+                  <Card className="bg-label">
                     <Card.Body>
                       <Card.Title className="card-title">
                         பொருட்பால்
@@ -82,7 +82,7 @@ function Section() {
                   </Card>
                 </Col>
                 <Col className="col-md-4 col-lg-4 mb-4">
-                  <Card className="bg-label-warning">
+                  <Card className="bg-label">
                     <Card.Body>
                       <Card.Title className="card-title tamil-font">
                         காமத்துப்பால்
